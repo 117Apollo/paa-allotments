@@ -471,27 +471,90 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .hero { min-height: auto; }
-      .hero-bar { padding: 0.75rem 1.25rem 0; align-items: center; }
-      .hero-nav { gap: 1.25rem; padding-top: 0; }
-      .hero-nav a { font-size: 0.7rem; }
-      .hero-logo { height: 56px; }
+
+      /* Hero: slim top bar, watercolour as hero image, headline below */
+      .hero {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-bar {
+        padding: 1rem 1.25rem;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+      }
+      .hero-logo { height: 44px; }
       .hero-logo-link { padding-top: 0; }
-      .hero-layer-bg { display: none; }
-      .hero-text { padding: 2rem 1.25rem 3rem; }
-      .hero h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); margin-bottom: 1.75rem; }
-      .sticky-nav { padding: 0 1.25rem; }
+      .hero-nav { gap: 1.5rem; padding-top: 0; }
+      .hero-nav a { font-size: 0.68rem; letter-spacing: 0.08em; }
+
+      /* Watercolour: in-flow, full width, no absolute positioning */
+      .hero-layer-bg {
+        position: relative;
+        top: auto; right: auto;
+        transform: none;
+        width: 100%;
+        opacity: 1;
+        animation: none;
+        background: var(--cream);
+        padding: 1.5rem 1.25rem 0;
+      }
+      .hero-layer-bg img {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Headline: tighter, left aligned, no wasted space */
+      .hero-text {
+        padding: 1.25rem 1.25rem 2.5rem;
+      }
+      .hero-eyebrow { margin-bottom: 0.75rem; }
+      .hero h1 {
+        font-size: 2.6rem;
+        line-height: 1.05;
+        margin-bottom: 1.5rem;
+      }
+      .btn-solid { width: 100%; text-align: center; padding: 1rem; }
+
+      /* Sticky nav */
+      .sticky-nav { padding: 0 1.25rem; height: 48px; }
+      .sticky-logo img { height: 30px; }
       .sticky-links { gap: 1.25rem; }
-      .about-section { padding: 4rem 1.25rem; }
-      .about-body { grid-template-columns: 1fr; }
-      .gallery-header { padding: 0 1.25rem; }
-      .gallery-track { padding: 0 1.25rem; }
-      .gallery-track img { height: 260px; }
-      .gallery-hint { padding: 1rem 1.25rem 0; }
-      .contact-section { padding: 3.5rem 1.25rem; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .sticky-links a { font-size: 0.68rem; }
+
+      /* About: tighter padding, single column */
+      .about-section { padding: 3rem 1.25rem; }
+      .about-headline { font-size: 2rem; margin-bottom: 2rem; }
+      .about-body { grid-template-columns: 1fr; gap: 1.25rem; }
+      .about-body p { font-size: 0.92rem; }
+      .about-body .cta-wrap { margin-top: 0.5rem; }
+      .about-body .btn-solid { width: auto; }
+
+      /* Gallery: shorter images, more visible at once */
+      .gallery-section { padding: 2rem 0 3rem; }
+      .gallery-header { padding: 0 1.25rem; margin-bottom: 1.25rem; }
+      .gallery-header h2 { font-size: 1.6rem; }
+      .gallery-track { padding: 0 1.25rem; gap: 4px; }
+      .gallery-track img { height: 200px; }
+      .gallery-hint { padding: 0.75rem 1.25rem 0; }
+
+      /* Contact: stack, reduce padding */
+      .contact-section { padding: 3rem 1.25rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-left h2 { font-size: 2rem; }
       .form-row { grid-template-columns: 1fr; }
-      footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; }
+      .form-submit .btn-solid { width: 100%; text-align: center; }
+
+      /* Footer */
+      footer {
+        padding: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .footer-logo { height: 32px; }
     }
   </style>
 </head>
@@ -511,9 +574,6 @@
 
   <!-- HERO -->
   <header class="hero" id="hero">
-    <div class="hero-layer hero-layer-bg" id="layer-bg">
-      <img src="images/watercolour.png" alt="" aria-hidden="true" />
-    </div>
     <div class="hero-bar">
       <a href="#" class="hero-logo-link">
         <img src="images/Green_Logo.png" alt="Perdiswell Allotment Association" class="hero-logo" />
@@ -523,6 +583,9 @@
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+    </div>
+    <div class="hero-layer hero-layer-bg" id="layer-bg">
+      <img src="images/watercolour.png" alt="" aria-hidden="true" />
     </div>
     <div class="hero-text">
       <p class="hero-eyebrow">Perdiswell · Worcester</p>
